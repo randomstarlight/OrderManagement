@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/dao/beans/Order.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/web/WEB-INF/web.xml</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/dao/OrderDAO.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/dao/impl/OrderDAOImpl.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/dao/impl/ConnectionManager.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/web/index.html</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/sqlite/SQLiteConnector.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/test/com/ordm/service/OrderResourceTest.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/dao/DAO.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/exception/ORDMStorageException.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/web/META-INF/context.xml</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/service/OrderService.java</file>
+            <file>file:/D:/Work/Learning/OrderManagement/src/java/com/ordm/dao/DAOFactory.java</file>
+        </group>
+    </open-files>
+</project-private>
