@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ordm.dao.impl;
 
 import com.ordm.dao.OrderDAO;
@@ -18,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Implementation of the DAO interface specific to Order objects.
  *
  * @author Jul
  */
@@ -27,6 +23,13 @@ public class OrderDAOImpl implements OrderDAO {
     public OrderDAOImpl() {
     }
 
+    /**
+     * Method that returns an order based on its id
+     *
+     * @param id id of the Order
+     * @return Order object with the provided id
+     * @throws ORDMStorageException
+     */
     @Override
     public Order get(Object id) throws ORDMStorageException {
         Order order = null;
@@ -41,6 +44,12 @@ public class OrderDAOImpl implements OrderDAO {
         return order;
     }
 
+    /**
+     * Method that lists all available orders
+     *
+     * @return An ArrayList with all orders in the DB
+     * @throws ORDMStorageException
+     */
     @Override
     public List<Order> list() throws ORDMStorageException {
         List<Order> orders = new ArrayList<>();
@@ -61,6 +70,13 @@ public class OrderDAOImpl implements OrderDAO {
         return orders;
     }
 
+    /**
+     * Method that creates an order in the DB based on the Order object provided
+     *
+     * @param order
+     * @return an Order object representing the new order created together with newly generated key
+     * @throws ORDMStorageException
+     */
     @Override
     public Order create(Order order) throws ORDMStorageException { 
         try {
@@ -84,6 +100,15 @@ public class OrderDAOImpl implements OrderDAO {
         return order;
     }
 
+    /**
+     * Method that updates order fields based on the fields available in the Order object provided
+     * For demonstration purposes, the only field that can be updated is the Description field, others could be added provided the data model is more complex
+     * The id and status should not be updated via this method
+     *
+     * @param id unique id of the order
+     * @param order Order object with fields to be updated
+     * @throws ORDMStorageException
+     */
     @Override
     public void update(Object id, Order order) throws ORDMStorageException {        
         try {
@@ -100,12 +125,20 @@ public class OrderDAOImpl implements OrderDAO {
         }   
     }
     
+    /**
+     * Method that increments the status of Order, allowing it to go forward to the next step
+     *
+     * @param id id of the Order
+     * @return an Order object with the new status attached
+     * @throws ORDMStorageException
+     */
     @Override
-    public void forwardStatus(Object id) throws ORDMStorageException {         
+    public Order forwardStatus(Object id) throws ORDMStorageException {         
         try {
             Order order = this.getOrderById(id);
             int status = order.getStatus();
             status++;
+            order.setStatus(status);
             
             Map<Integer, Object> values = new HashMap<>();
             values.put(1, status);
@@ -114,12 +147,19 @@ public class OrderDAOImpl implements OrderDAO {
             manager.executeStatement(STATEMENT_ORDER_UPDATE_STATUS, values, false);
              
             manager.close();
+            return order;
             
         } catch (SQLException ex) {
             throw new ORDMStorageException(ex);
         }  
     }
 
+    /**
+     * Method that removes an Order from the DB
+     *
+     * @param id id of the Order
+     * @throws ORDMStorageException
+     */
     @Override
     public void remove(Object id) throws ORDMStorageException {
         try {
@@ -134,7 +174,13 @@ public class OrderDAOImpl implements OrderDAO {
         }
     }
     
-    private Order getOrderById(Object id) throws ORDMStorageException, SQLException {
+    /**
+     * Private method that returns an order based on the order id that can only be used by the other public methods
+     * 
+     * @param id
+     * @throws SQLException
+     */
+    private Order getOrderById(Object id) throws SQLException {
         Order order = new Order();
         Map<Integer, Object> values = new HashMap<>();
         values.put(1, id);

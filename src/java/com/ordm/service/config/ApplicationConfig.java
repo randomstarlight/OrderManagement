@@ -10,6 +10,8 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
+ * Configuration class that allows exposure of REST services under the path specified
+ * Registered services with be available per the paths annotated
  *
  * @author Jul
  */

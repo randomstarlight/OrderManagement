@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ordm.dao;
 
 import com.ordm.exception.ORDMStorageException;
 import java.util.List;
 
 /**
+ * Generic representation of a data access object. Can we adapted to work with any type of storage
  *
  * @author Jul
- * @param <T>
+ * @param <T> The bean representation of the object that will be manipulated
  */
 public interface DAO<T> {    
+    
     T get(Object id) throws ORDMStorageException;
      
     List<T> list() throws ORDMStorageException;

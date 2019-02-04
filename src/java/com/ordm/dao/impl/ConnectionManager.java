@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ordm.dao.impl;
 
 import java.math.BigDecimal;
@@ -18,6 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Convenience class that handles the interaction with standard JDBC objects. 
+ * Any type of SQL connection can be injected in this class.
+ * For demonstration purposes this api project uses a SQLite db
  *
  * @author Jul
  */

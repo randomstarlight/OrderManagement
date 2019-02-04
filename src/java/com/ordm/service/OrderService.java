@@ -31,10 +31,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("order")
 public class OrderService {
-    static final Logger LOGGER = Logger.getLogger(OrderService.class.getName());
-
-    @Context
-    private UriInfo context;    
+    static final Logger LOGGER = Logger.getLogger(OrderService.class.getName());   
     
     private final OrderDAO orderDAO = DAOFactory.getOrderDAO();
 
@@ -137,11 +134,13 @@ public class OrderService {
      */
     @POST
     @Path("status/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateOrderStatus(@PathParam("id") String id, Order order) {        
+    public Response updateOrderStatus(@PathParam("id") String id) {        
         try {
-            orderDAO.forwardStatus(id);
-            return Response.status(Response.Status.OK).build();
+            Order order = orderDAO.forwardStatus(id);
+            
+            Gson gson = new Gson();
+            String data = gson.toJson(order); 
+            return Response.ok(data, MediaType.APPLICATION_JSON).build();
         } catch (ORDMStorageException ex) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Exception occurred: " + ex.getMessage()).build();
         }

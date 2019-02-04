@@ -11,8 +11,14 @@ package com.ordm.exception;
  */
 public class ORDMStorageException extends Exception {
     Exception e;
+    String message;
 
     public ORDMStorageException(Exception e) {
         this.e = e;
-    }   
+        this.message = e.getMessage();
+    } 
+    
+    public String getMessage() {
+        return this.message;
+    }
 }

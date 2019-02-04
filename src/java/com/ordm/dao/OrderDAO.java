@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ordm.dao;
 
 import com.ordm.dao.beans.Order;
@@ -10,8 +5,11 @@ import com.ordm.exception.ORDMStorageException;
 
 /**
  *
+ * Extension of the generic DAO interface that is specific to an Order object
+ * The Impl class must implement all generic DAO methods as well as status forwarding
+ * 
  * @author Jul
  */
 public interface OrderDAO extends DAO<Order> {
-    public void forwardStatus(Object id) throws ORDMStorageException;
+    public Order forwardStatus(Object id) throws ORDMStorageException;
 }
